@@ -1,14 +1,14 @@
 import React from "react";
 import { Play, Star } from "lucide-react";
+import { Link } from "react-router-dom"; // 👈 Import Link
 
 const MovieCard = ({
   movie,
   index,
   isAnimated = true,
-  isLoaded = true,  
+  isLoaded = true,
   IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL,
 }) => {
-  console.log(movie.title + " " + IMAGE_BASE_URL);
   return (
     <div
       className={`relative group transition-all duration-500 transform hover:scale-105 ${
@@ -22,20 +22,24 @@ const MovieCard = ({
     >
       <div className="rounded-lg overflow-hidden shadow-lg bg-gray-900">
         <div className="relative">
-          <img
-            src={
-              movie.poster_path?.startsWith("/api")
-                ? movie.poster_path
-                : `${IMAGE_BASE_URL}w500${movie.poster_path}`
-            }
-            alt={movie.title}
-            className="w-full h-64 object-cover"
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-            <button className="bg-red-600 text-white rounded-full p-3 transform scale-0 group-hover:scale-100 transition-all duration-300">
-              <Play className="h-6 w-6" />
-            </button>
-          </div>
+          {/* 👇 Wrap image in a Link */}
+          <Link to={`/movie/${movie.id}`}>
+            <img
+              src={
+                movie.poster_path?.startsWith("/api")
+                  ? movie.poster_path
+                  : `${IMAGE_BASE_URL}w500${movie.poster_path}`
+              }
+              alt={movie.title}
+              className="w-full h-64 object-cover"
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+              <button className="bg-emerald-600 text-white rounded-full p-3 transform scale-0 group-hover:scale-100 transition-all duration-300">
+                <Play className="h-6 w-6" />
+              </button>
+            </div>
+          </Link>
+
           {movie.vote_average > 0 && (
             <div className="absolute top-2 right-2 bg-black bg-opacity-70 text-white text-sm font-bold rounded px-2 py-1 flex items-center">
               <Star

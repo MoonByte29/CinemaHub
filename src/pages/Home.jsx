@@ -9,6 +9,7 @@ import {
   Calendar,
 } from "lucide-react";
 import MovieCard from "../components/MovieCard";
+import { Link } from "react-router-dom"; 
 
 const Home = () => {
   const [featuredMovies, setFeaturedMovies] = useState([]);
@@ -240,7 +241,7 @@ const Home = () => {
                     <span className="w-1 h-1 bg-gray-500 rounded-full"></span>
                     <div className="flex items-center">
                       <Star
-                        className="h-4 w-4 text-yellow-400 mr-1"
+                        className="h-4 w-4 text-emerald-400 mr-1"
                         fill="currentColor"
                       />
                       {Math.round(movie.vote_average * 10) / 10}
@@ -281,12 +282,12 @@ const Home = () => {
                         : "translate-y-10 opacity-0"
                     }`}
                   >
-                    <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full font-bold flex items-center transition-colors duration-300">
+                    {/* <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-full font-bold flex items-center transition-colors duration-300">
                       <Play className="h-5 w-5 mr-2" /> Watch Now
-                    </button>
-                    <button className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-full font-bold flex items-center transition-colors duration-300">
+                    </button> */}
+                    <Link to = {`/movie/${movie.id}`} className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-full font-bold flex items-center transition-colors duration-300">
                       <Info className="h-5 w-5 mr-2" /> More Info
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -322,7 +323,7 @@ const Home = () => {
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    currentSlide === index ? "bg-red-600 w-8" : "bg-gray-500"
+                    currentSlide === index ? "bg-emerald-600 w-8" : "bg-gray-500"
                   }`}
                 />
               ))}
@@ -345,7 +346,7 @@ const Home = () => {
           </h2>
           <a
             href="#"
-            className={`text-red-500 hover:text-red-400 flex items-center transition-all duration-500 ${
+            className={`text-emerald-500 hover:text-emerald-400 flex items-center transition-all duration-500 ${
               isLoaded
                 ? "translate-x-0 opacity-100"
                 : "translate-x-10 opacity-0"
@@ -383,7 +384,7 @@ const Home = () => {
             <a
               key={category}
               href="#"
-              className={`bg-gray-800 hover:bg-gray-700 text-white rounded-lg p-4 text-center transition-all duration-500 hover:shadow-lg hover:shadow-red-900/20 ${
+              className={`bg-gray-800 hover:bg-gray-700 text-white rounded-lg p-4 text-center transition-all duration-500 hover:shadow-lg hover:shadow-emerald-900/20 ${
                 isLoaded
                   ? "translate-y-0 opacity-100"
                   : "translate-y-10 opacity-0"
@@ -410,7 +411,7 @@ const Home = () => {
           </h2>
           <a
             href="#"
-            className={`text-red-500 hover:text-red-400 flex items-center transition-all duration-500 ${
+            className={`text-emerald-500 hover:text-emerald-400 flex items-center transition-all duration-500 ${
               isLoaded
                 ? "translate-x-0 opacity-100"
                 : "translate-x-10 opacity-0"
@@ -444,13 +445,13 @@ const Home = () => {
             }`}
           >
             <div className="flex items-center">
-              <Calendar className="h-6 w-6 mr-2 text-red-500" />
+              <Calendar className="h-6 w-6 mr-2 text-emerald-500" />
               Coming Soon
             </div>
           </h2>
           <a
             href="#"
-            className={`text-red-500 hover:text-red-400 flex items-center transition-all duration-500 ${
+            className={`text-emerald-500 hover:text-emerald-400 flex items-center transition-all duration-500 ${
               isLoaded
                 ? "translate-x-0 opacity-100"
                 : "translate-x-10 opacity-0"
@@ -492,9 +493,9 @@ const Home = () => {
               <input
                 type="email"
                 placeholder="Your email address"
-                className="bg-gray-700 text-white px-6 py-3 rounded-full outline-none focus:ring-2 focus:ring-red-500 flex-grow sm:max-w-md"
+                className="bg-gray-700 text-white px-6 py-3 rounded-full outline-none focus:ring-2 focus:ring-emerald-500 flex-grow sm:max-w-md"
               />
-              <button className="bg-red-600 hover:bg-red-700 text-white font-medium px-6 py-3 rounded-full transition-colors duration-300">
+              <button className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-6 py-3 rounded-full transition-colors duration-300">
                 Subscribe Now
               </button>
             </div>
